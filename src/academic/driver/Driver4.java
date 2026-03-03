@@ -1,7 +1,5 @@
 package academic.driver;
 
-// @author-12S24014 Arion Manurung
-
 import academic.model.Course;
 import academic.model.Student;
 import academic.model.Enrollment;
@@ -15,10 +13,16 @@ import java.util.Scanner;
 public class Driver4 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        
         // Menggunakan Map untuk menyimpan Course dan Student agar mudah dicari berdasarkan ID/Code
+        // Menggunakan List untuk menyimpan Course, Student, dan Enrollment agar urutan inputnya terjaga
         Map<String, Course> courseMap = new HashMap<>();
+        List<Course> coursesOutputOrder = new ArrayList<>(); // List untuk menjaga urutan output Course
+
         Map<String, Student> studentMap = new HashMap<>();
-        List<Enrollment> enrollments = new ArrayList<>(); // Enrollments bisa disimpan di List
+        List<Student> studentsOutputOrder = new ArrayList<>(); // List untuk menjaga urutan output Student
+
+        List<Enrollment> enrollments = new ArrayList<>(); // Enrollment sudah menggunakan List, jadi urutan terjaga
 
         String line;
         while (scanner.hasNextLine()) {
@@ -39,7 +43,8 @@ public class Driver4 {
                         int credit = Integer.parseInt(parts[3]);
                         String grade = parts[4];
                         Course course = new Course(code, name, credit, grade);
-                        courseMap.put(code, course); // Simpan course ke map
+                        courseMap.put(code, course); // Simpan course ke map untuk lookup
+                        coursesOutputOrder.add(course); // Simpan course ke list untuk output berurutan
                     }
                     break;
                 case "student-add":
@@ -50,7 +55,8 @@ public class Driver4 {
                         String year = parts[3];
                         String major = parts[4];
                         Student student = new Student(id, name, year, major);
-                        studentMap.put(id, student); // Simpan student ke map
+                        studentMap.put(id, student); // Simpan student ke map untuk lookup
+                        studentsOutputOrder.add(student); // Simpan student ke list untuk output berurutan
                     }
                     break;
                 case "enrollment-add":
@@ -67,8 +73,9 @@ public class Driver4 {
 
                         if (course != null && student != null) {
                             // Jika Course dan Student ditemukan, baru buat Enrollment
+                            // Grade default "None" sesuai model
                             Enrollment enrollment = new Enrollment(course, student, academicYear, semester);
-                            enrollments.add(enrollment); // Simpan enrollment
+                            enrollments.add(enrollment); // Simpan enrollment ke list
                         } else {
                             // Pesan peringatan jika course atau student tidak ditemukan (opsional)
                             System.err.println("Warning: Course " + courseCode + " or Student " + studentId + " not found for enrollment. Skipping.");
@@ -82,17 +89,17 @@ public class Driver4 {
         }
 
         // --- Bagian Output Disesuaikan ---
-        // 1. Tampilkan semua Courses
-        for (Course course : courseMap.values()) {
+        // 1. Tampilkan semua Courses sesuai urutan input
+        for (Course course : coursesOutputOrder) {
             System.out.println(course.toString());
         }
 
-        // 2. Tampilkan semua Students
-        for (Student student : studentMap.values()) {
+        // 2. Tampilkan semua Students sesuai urutan input
+        for (Student student : studentsOutputOrder) {
             System.out.println(student.toString());
         }
 
-        // 3. Tampilkan semua Enrollments
+        // 3. Tampilkan semua Enrollments sesuai urutan input
         for (Enrollment enrollment : enrollments) {
             System.out.println(enrollment.toString());
         }
