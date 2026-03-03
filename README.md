@@ -2,9 +2,9 @@
 Pada tugas kali ini anda akan mengembangkan pekerjaan sebelumnya terkait Academic Simulator. Spesifikasi-spesifikasi dari pekerjaan sebelumnya tetap digunakan dalam tugas kali ini.
 
 ## Task 01: Add More Courses (20 pts)
-Tugas pertama anda adalah mengembangkan sebuah driver class (```academic.driver.Driver1```) yang mampu menyimulasikan kemampuan penyimpanan multiple ```academic.model.Course```. Gunakan array sebagai media penyimpanan. Lebih lanjut, driver juga harus memiliki kemampuan untuk menerima baris-baris masukan interaktif dari pengguna. Setiap baris masukan merepresentasikan data sebuah course. Sebuah baris masukan terdiri atas 4 segmen yang diseparasi dengan ```#```. Keempat segmen merepresentasikan data yang diperlukan untuk membentuk sebuah course.
+    Tugas pertama anda adalah mengembangkan sebuah driver class (```academic.driver.Driver1```) yang mampu menyimulasikan kemampuan penyimpanan multiple ```academic.model.Course```. Gunakan array sebagai media penyimpanan. Lebih lanjut, driver juga harus memiliki kemampuan untuk menerima baris-baris masukan interaktif dari pengguna. Setiap baris masukan merepresentasikan data sebuah course. Sebuah baris masukan terdiri atas 4 segmen yang diseparasi dengan ```#```. Keempat segmen merepresentasikan data yang diperlukan untuk membentuk sebuah course.
 
-Pada saat eksekusi, driver akan terus-menerus membaca baris masukan hingga diperintahkan untuk berhenti. Perintah berhenti ditandai dengan ```---```. Perhatikan contoh berikut.
+    Pada saat eksekusi, driver akan terus-menerus membaca baris masukan hingga diperintahkan untuk berhenti. Perintah berhenti ditandai dengan ```---```. Perhatikan contoh berikut.
 
 **Input:**
 ```bash
